@@ -1,4 +1,17 @@
+
+-- DROP ALL TABLE FIRST
+DO $$ 
+DECLARE 
+    r RECORD;
+BEGIN 
+    FOR r IN (SELECT tablename FROM pg_tables WHERE schemaname = 'public') LOOP
+        EXECUTE 'DROP TABLE IF EXISTS ' || quote_ident(r.tablename) || ' CASCADE';
+    END LOOP; 
+END $$;
+
 -- Enums
+DROP TYPE IF EXISTS pmt_method;
+DROP TYPE IF EXISTS system_req;
 CREATE TYPE pmt_method AS ENUM ('promptpay', 'mastercard', 'visa', 'truemoney');
 CREATE TYPE system_req AS ENUM ('min', 'recommended');
 
@@ -22,10 +35,8 @@ CREATE TABLE accounts (
     username VARCHAR(50) NOT NULL UNIQUE,
     password VARCHAR(255) NOT NULL,
     created_date DATE NOT NULL DEFAULT CURRENT_DATE,
-    is_buyer BOOLEAN DEFAULT FALSE,
     total_spend DECIMAL(10, 2) DEFAULT 0,
     total_game INT DEFAULT 0,
-    is_seller BOOLEAN DEFAULT FALSE,
     total_sale DECIMAL(10, 2) DEFAULT 0
 );
 
