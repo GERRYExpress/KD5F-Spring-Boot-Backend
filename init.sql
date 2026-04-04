@@ -1,4 +1,3 @@
-
 -- DROP ALL TABLE FIRST
 DO $$ 
 DECLARE 
@@ -21,7 +20,7 @@ CREATE TABLE products (
     name VARCHAR(50) NOT NULL UNIQUE,
     description TEXT NOT NULL, -- TEXT is preferred over VARCHAR(1024) in Postgres
     price DECIMAL(10, 2) NOT NULL,
-    poster_url VARCHAR(255) NOT NULL
+    poster_url VARCHAR(512) NOT NULL
 );
 
 CREATE TABLE categories (
