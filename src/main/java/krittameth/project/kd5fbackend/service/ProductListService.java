@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import krittameth.project.kd5fbackend.model.ProductList;
+import krittameth.project.kd5fbackend.projection.ProductListProjection;
 import krittameth.project.kd5fbackend.repository.ProductListRepository;
 
 @Service
@@ -14,8 +15,8 @@ public class ProductListService {
     @Autowired
     private ProductListRepository productListRepository;
 
-    public List<ProductList> getAllProductList() {
-        return productListRepository.findAll();
+    public List<ProductListProjection> findAllReleaseProduct() {
+        return productListRepository.findAllReleaseProduct();
     }
 
     public List<ProductList> getByProductId(int productId) {
