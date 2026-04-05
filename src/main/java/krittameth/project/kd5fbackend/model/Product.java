@@ -35,6 +35,13 @@ public class Product {
     @Column(name = "poster_url")
     private String poster_url;
 
+    @OneToMany(cascade = {CascadeType.MERGE})
+    @JsonIgnore
+    private List<Image> images = new ArrayList<>();
+
+    @OneToMany(cascade = {CascadeType.MERGE})
+    @JsonIgnore
+    private List<Video> videos = new ArrayList<>();
 
     // Map to Associative Entity (product_lists)
     @OneToMany(mappedBy = "product", cascade = {CascadeType.MERGE})
