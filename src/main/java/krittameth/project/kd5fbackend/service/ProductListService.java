@@ -19,7 +19,7 @@ public class ProductListService {
         return productListRepository.findAllReleaseProduct();
     }
 
-    public List<ProductList> getByProductId(int productId) {
+    public List<ProductListProjection> getByProductId(int productId) {
         return productListRepository.findByProductId(productId);
     }
 

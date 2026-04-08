@@ -37,7 +37,7 @@ public class ProductListController {
     }
 
     @GetMapping("/{id}")
-    public List<ProductList> getByProductId(@PathVariable int id) {
+    public List<ProductListProjection> getByProductId(@PathVariable int id) {
         return productListService.getByProductId(id);
     }
 }

@@ -6,4 +6,6 @@ public interface ProductListProjection {
     String getName();
     Double getPrice();
     String getPoster_url();
+    String getDescription();
+    String getSeller();
 }
